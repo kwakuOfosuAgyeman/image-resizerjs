@@ -1,10 +1,10 @@
 {
-  "name": "image-resizerjs",
+  "name": "picture-resizerjs",
   "version": "1.0.0",
   "description": "Image resizing and editing node package",
   "main": "index.js",
   "bin": {
-    "image-resizerjs": "bin/cli.js"
+    "picture-resizerjs": "bin/cli.js"
   },
   "directories": {
     "test": "test"
