@@ -1,4 +1,4 @@
-# ImageProcessor
+# ResizerJs
 
 Resizerjs is a powerful Node.js module for resizing, converting, and applying basic edits to images. Designed for simplicity and performance, it's ideal for a wide range of applications, from web development to batch processing for digital media.
 
