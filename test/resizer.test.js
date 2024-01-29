@@ -1,5 +1,5 @@
 const fs = require('fs').promises;
-const resizeImage = require('../src/resizer');
+const {resizeImage, processImagesBatch} = require('../src/resizer');
 
 // Helper function to check if file exists and is not empty
 async function fileExists(filePath) {
@@ -67,11 +67,54 @@ describe('Image Resizing and Editing', () => {
 
   // Error Handling
   it('should handle non-existent input file', async () => {
-    const outputPath = 'test/output/nonexistent.png';
-    await expect(resizeImage('test/images/nonexistent.png', outputPath, { width: 100, height: 100 })).rejects.toThrow();
+    const result = await resizeImage('path/to/nonexistent.jpg', 'path/to/output.jpg', {});
+    expect(result.status).toBe('Failed');
+    expect(result.error).toMatch(/(not found|no such file|does not exist)/i);
   });
+
+  it('should handle invalid output path', async () => {
+    const result = await processImage('test/input/sample.jpg', '/invalid/path/output.jpg', {});
+    expect(result.status).toBe('Failed');
+    expect(result.error).toMatch(/(invalid path|permission denied|unwritable)/i);
+  });
+
+  it('should handle unsupported image formats', async () => {
+    const result = await processImage('path/to/unsupported.bmp', 'path/to/output.jpg', {});
+    expect(result.status).toBe('Failed');
+    expect(result.error).toMatch(/unsupported format/i);
+  });
+
+  it('should handle processing errors', async () => {
+    const result = await processImage('test/images/corrupted.jpg', 'path/to/output.jpg', {});
+    expect(result.status).toBe('Failed');
+    expect(result.error).toBeTruthy();
+  });
+  
+  
+  
 
   // Add more tests for other functionalities and edge cases as needed
 
+});
+
+describe('Batch Image Conversion', () => {
+  it('should convert multiple images to a different format', async () => {
+    const images = [
+      { inputPath: 'test/images/sample1.jpg', outputPath: 'test/output/sample1.png' },
+      { inputPath: 'test/images/sample2.png', outputPath: 'test/output/sample2.jpg' }
+      // Add more images as needed
+    ];
+
+    const options = { format: 'desired_format' }; // Replace 'desired_format' with actual format
+    const results = await processImagesBatch(images, options);
+
+    for (const result of results) {
+      expect(result.status).toBe('Success');
+      expect(await fileExists(result.outputPath)).toBeTruthy();
+      // Additional check: Confirm the output file is in the correct format
+    }
+  });
+
+  // More tests for error cases or specific format scenarios
 });
 
