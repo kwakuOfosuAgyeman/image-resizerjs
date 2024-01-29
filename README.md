@@ -1,6 +1,6 @@
-# ResizerJs
+# Image-ResizerJs
 
-Resizerjs is a powerful Node.js module for resizing, converting, and applying basic edits to images. Designed for simplicity and performance, it's ideal for a wide range of applications, from web development to batch processing for digital media.
+Image-ResizerJs is a powerful Node.js module for resizing, converting, and applying basic edits to images. Designed for simplicity and performance, it's ideal for a wide range of applications, from web development to batch processing for digital media.
 
 ## Features
 
@@ -13,10 +13,10 @@ Resizerjs is a powerful Node.js module for resizing, converting, and applying ba
 
 ## Installation
 
-Install ResizerJs via npm:
+Install Image-ResizerJs via npm:
 
 ```bash
-npm install resizerjs
+npm install image-resizerjs
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ npm install resizerjs
 Import and use the module in your JavaScript code:
 
 ```javascript
-const resizer = require('resizerjs');
+const resizer = require('image-resizerjs');
 
 // Resize an image
 resizer.resize('path/to/input.jpg', 'path/to/output.jpg', { width: 200, height: 200 });
@@ -44,12 +44,12 @@ resizer.edit('path/to/input.jpg', 'path/to/output.jpg', { grayscale: true });
 Resize an image using the command-line interface:
 
 ```bash
-resizer -i path/to/input.jpg -o path/to/output.jpg -w 300 -h 200
+image-resizerjs -i path/to/input.jpg -o path/to/output.jpg -w 300 -h 200
 ```
 
 Convert an image to another format:
 ```bash
-resizer -i path/to/input.png -o path/to/output.jpg -f jpeg
+image-resizerjs -i path/to/input.png -o path/to/output.jpg -f jpeg
 ```
 
 ## API Reference

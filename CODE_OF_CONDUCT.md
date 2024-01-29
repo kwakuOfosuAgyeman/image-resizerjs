@@ -1,4 +1,4 @@
-# Code of Conduct for ResizerJs
+# Code of Conduct for Image-ResizerJs
 
 ## Our Pledge
 

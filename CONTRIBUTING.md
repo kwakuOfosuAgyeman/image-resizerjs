@@ -1,4 +1,4 @@
-# Contributing to ResizerJs
+# Contributing to Image-ResizerJs
 
 First off, thank you for considering contributing to ResizerJs! It's people like you that make ResizerJs such a great tool.
 
