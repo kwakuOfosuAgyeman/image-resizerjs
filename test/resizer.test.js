@@ -15,16 +15,16 @@ describe('Image Resizing and Editing', () => {
   
   // Resizing
   it('should resize an image correctly', async () => {
-    const outputPath = 'test/output/resized.jpg';
-    await resizeImage('test/images/sample.jpg', outputPath, { width: 100, height: 100 });
+    const outputPath = 'test/output/resized.png';
+    await resizeImage('test/images/sample.png', outputPath, { width: 100, height: 100 });
     expect(await fileExists(outputPath)).toBeTruthy();
     // Additional dimension checks can be implemented
   });
 
   // Grayscale Conversion
   it('should convert an image to grayscale', async () => {
-    const outputPath = 'test/output/grayscale.jpg';
-    await resizeImage('test/images/sample.jpg', outputPath, { grayscale: true });
+    const outputPath = 'test/output/grayscale.png';
+    await resizeImage('test/images/sample.png', outputPath, { grayscale: true });
     expect(await fileExists(outputPath)).toBeTruthy();
     // Additional checks for color change can be implemented
   });
@@ -44,31 +44,31 @@ describe('Image Resizing and Editing', () => {
   // Flip
   it('should flip an image vertically', async () => {
     const outputPath = 'test/output/flipped.jpg';
-    await resizeImage('test/images/sample.jpg', outputPath, { flip: true });
+    await resizeImage('test/images/sample.png', outputPath, { flip: true });
     expect(await fileExists(outputPath)).toBeTruthy();
     // Additional checks for flip can be implemented
   });
 
   // Flop
   it('should flop an image horizontally', async () => {
-    const outputPath = 'test/output/flopped.jpg';
-    await resizeImage('test/images/sample.jpg', outputPath, { flop: true });
+    const outputPath = 'test/output/flopped.png';
+    await resizeImage('test/images/sample.png', outputPath, { flop: true });
     expect(await fileExists(outputPath)).toBeTruthy();
     // Additional checks for flop can be implemented
   });
 
   // Blur
   it('should apply blur to an image', async () => {
-    const outputPath = 'test/output/blurred.jpg';
-    await resizeImage('test/images/sample.jpg', outputPath, { blur: 5 });
+    const outputPath = 'test/output/blurred.png';
+    await resizeImage('test/images/sample.png', outputPath, { blur: 5 });
     expect(await fileExists(outputPath)).toBeTruthy();
     // Additional checks for blur effect can be implemented
   });
 
   // Error Handling
   it('should handle non-existent input file', async () => {
-    const outputPath = 'test/output/nonexistent.jpg';
-    await expect(resizeImage('test/images/nonexistent.jpg', outputPath, { width: 100, height: 100 })).rejects.toThrow();
+    const outputPath = 'test/output/nonexistent.png';
+    await expect(resizeImage('test/images/nonexistent.png', outputPath, { width: 100, height: 100 })).rejects.toThrow();
   });
 
   // Add more tests for other functionalities and edge cases as needed

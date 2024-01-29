@@ -1,7 +1,11 @@
 const sharp = require("sharp");
+const fs = require('fs');
 
 async function resizeImage(inputPath, outputPath, options) {
   try {
+    if (!fs.existsSync(inputPath)) {
+      throw new Error(`Input file does not exist: ${inputPath}`);
+    }
     let image = sharp(inputPath);
 
     if (options.width || options.height) {
@@ -36,6 +40,7 @@ async function resizeImage(inputPath, outputPath, options) {
     console.log(`Processed image saved to ${outputPath}`);
   } catch (err) {
     console.error("Error processing image:", err);
+    throw err;
   }
 }
 
