@@ -1,16 +1,16 @@
-# Contributing to ImageProcessor
+# Contributing to ResizerJs
 
-First off, thank you for considering contributing to ImageProcessor! It's people like you that make ImageProcessor such a great tool.
+First off, thank you for considering contributing to ResizerJs! It's people like you that make ResizerJs such a great tool.
 
 ## Code of Conduct
 
-This project and everyone participating in it is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [email@example.com].
+This project and everyone participating in it is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [kwakuayemang.2000@gmail.com].
 
 ## How Can I Contribute?
 
 ### Reporting Bugs
 
-This section guides you through submitting a bug report for ImageProcessor. Following these guidelines helps maintainers and the community understand your report, reproduce the behavior, and find related reports.
+This section guides you through submitting a bug report for ResizerJs. Following these guidelines helps maintainers and the community understand your report, reproduce the behavior, and find related reports.
 
 - **Use a clear and descriptive title** for the issue to identify the problem.
 - **Describe the exact steps which reproduce the problem** in as much detail as possible.
@@ -21,28 +21,28 @@ This section guides you through submitting a bug report for ImageProcessor. Foll
 
 ### Suggesting Enhancements
 
-This section guides you through submitting an enhancement suggestion for ImageProcessor, including completely new features and minor improvements to existing functionality.
+This section guides you through submitting an enhancement suggestion for ResizerJs, including completely new features and minor improvements to existing functionality.
 
 - **Use a clear and descriptive title** for the issue to identify the suggestion.
 - **Provide a step-by-step description of the suggested enhancement** in as much detail as possible.
 - **Provide specific examples to demonstrate the steps**. Include copy/pasteable snippets which you use in those examples, as Markdown code blocks.
 - **Describe the current behavior** and **explain which behavior you expected to see instead** and why.
-- **Explain why this enhancement would be useful** to most ImageProcessor users.
+- **Explain why this enhancement would be useful** to most ResizerJs users.
 
-### Your First Code Contribution
+<!-- ### Your First Code Contribution
 
-Unsure where to begin contributing to ImageProcessor? You can start by looking through these `beginner` and `help-wanted` issues:
+Unsure where to begin contributing to ResizerJs? You can start by looking through these `beginner` and `help-wanted` issues:
 
 - [Beginner issues](https://github.com/your/project/link/labels/beginner) - issues which should only require a few lines of code, and a test or two.
-- [Help wanted issues](https://github.com/your/project/link/labels/help%20wanted) - issues which should be a bit more involved than `beginner` issues.
+- [Help wanted issues](https://github.com/your/project/link/labels/help%20wanted) - issues which should be a bit more involved than `beginner` issues. -->
 
 ### Pull Requests
 
 The process described here has several goals:
 
-- Maintain ImageProcessor's quality
+- Maintain ResizerJs' quality
 - Fix problems that are important to users
-- Engage the community in working toward the best possible ImageProcessor
+- Engage the community in working toward the best possible ResizerJs
 
 Here are a few guidelines for submitting a pull request:
 
@@ -76,4 +76,4 @@ This section lists the labels we use to help us track and manage issues and pull
 
 Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.
 
-Thank you for contributing to ImageProcessor!
+Thank you for contributing to ResizerJs!
