@@ -1,0 +1,24 @@
+{
+  "name": "resizerjs",
+  "version": "1.0.0",
+  "description": "Image resizing and editing node package",
+  "main": "index.js",
+  "bin": {
+    "resizerjs": "bin/cli.js"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sharp": "^0.33.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
