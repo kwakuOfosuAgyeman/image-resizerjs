@@ -1,15 +1,47 @@
 const sharp = require("sharp");
-const fs = require('fs');
+const fs = require("fs");
 
-async function resizeImage(inputPath, outputPath, options) {
+function validateOptions(options) {
+    const validFormats = ['jpeg', 'png', 'webp', 'jpg']; // List of supported formats
+    const errors = [];
+  
+    if (options.width && (typeof options.width !== 'number' || options.width <= 0)) {
+      errors.push('Width must be a positive number.');
+    }
+  
+    if (options.height && (typeof options.height !== 'number' || options.height <= 0)) {
+      errors.push('Height must be a positive number.');
+    }
+  
+    if (options.format && !validFormats.includes(options.format)) {
+      errors.push(`Format must be one of the following: ${validFormats.join(', ')}.`);
+    }
+  
+    // ...additional checks for other options...
+  
+    return errors;
+  }
+  
+
+async function resizeImage(imageConfig) {
+  let inputPath = imageConfig.inputPath;
+  let outputPath = imageConfig.outputPath;
+  let options = imageConfig.options
+  const validationErrors = validateOptions(options);
+  if (validationErrors.length > 0) {
+    throw new Error(`Invalid options: ${validationErrors.join(' ')}`);
+  }
   try {
-    if (!fs.existsSync(inputPath)) {
-      throw new Error(`Input file does not exist: ${inputPath}`);
+    if (!fs.existsSync(imageConfig.inputPath)) {
+      throw new Error(`Input file does not exist: ${imageConfig.inputPath}`);
     }
     let image = sharp(inputPath);
 
     if (options.width || options.height) {
-      image = image.resize(options.width, options.height);
+      image = image.resize(
+        options.width,
+        options.height
+      );
     }
 
     // Basic image editing options
@@ -37,11 +69,18 @@ async function resizeImage(inputPath, outputPath, options) {
     }
 
     await image.toFile(outputPath);
-    console.log(`Processed image saved to ${outputPath}`);
-  } catch (err) {
-    console.error("Error processing image:", err);
-    throw err;
+    return { inputPath, outputPath, status: "Success" };
+  } catch (error) {
+    return { inputPath, outputPath, status: "Failed", error: error.message };
   }
 }
 
-module.exports = resizeImage;
+// Function to process a batch of images
+async function processImagesBatch(imagesConfig) {
+  const results = await Promise.all(
+    imagesConfig.map((imageConfig) => resizeImage(imageConfig))
+  );
+  return results;
+}
+
+module.exports = { resizeImage, processImagesBatch };

@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 const yargs = require("yargs");
-const { resizeImage } = require("../src");
+const { processImage, processImagesBatch } = require("../src/resizer");
+const fs = require("fs").promises;
 
-const options = yargs
-  .usage("Usage: -i <input> -o <output> -w <width> -h <height>")
+const argv = yargs
   .option("i", {
     alias: "input",
     describe: "Input image path",
@@ -48,4 +48,42 @@ const options = yargs
     type: "number",
   }).argv;
 
-resizeImage(options.input, options.output, options.width, options.height);
+async function readBatchFile(filePath) {
+  const content = await fs.readFile(filePath, "utf8");
+  return JSON.parse(content);
+}
+
+async function main() {
+  try {
+    const options = {
+      /* extract options from argv */
+    };
+
+    if (argv.batch) {
+      const batch = await readBatchFile(argv.batch);
+      const results = await processImagesBatch(batch, options);
+      results.forEach((result) => {
+        if (result.status === "Success") {
+          console.log(`Processed: ${result.inputPath} to ${result.outputPath}`);
+        } else {
+          console.error(`Failed: ${result.inputPath}, Error: ${result.error}`);
+        }
+      });
+    } else if (argv.input && argv.output) {
+      const result = await processImage(argv.input, argv.output, options);
+      if (result.status === "Success") {
+        console.log(`Processed: ${result.inputPath} to ${result.outputPath}`);
+      } else {
+        console.error(`Failed: ${result.inputPath}, Error: ${result.error}`);
+      }
+    } else {
+      console.error(
+        "Error: Please provide valid input and output paths, or a batch file."
+      );
+    }
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+}
+
+main();
